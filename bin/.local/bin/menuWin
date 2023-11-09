@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Map the menu button to right super.
+xmodmap -e 'keycode 135 = Super_R'
+xmodmap -e 'keycode 89 = Caps_Lock'

@@ -1,0 +1,18 @@
+# You can add comments to these files with #
+C ${XDG_CACHE_HOME:-$HOME/.cache}
+c  ${XDG_CONFIG_HOME:-$HOME/.config}
+D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+l  $HOME/.local
+r  $HOME/.local/src
+sc  $HOME/.local/bin
+h   $HOME
+m   ${XDG_MUSIC_DIR:-$HOME/Music}
+w  ${XDG_WORK_DIR:-$HOME/Work}
+u  ${XDG_UDJA_FRONTEND_DIR:-$HOME/Work/Udja}
+uf  ${XDG_UDJA_FRONTEND_DIR:-$HOME/Work/Udja/FrontEnd}
+up  ${XDG_UDJA_BACKEND_DIR:-$HOME/Work/Udja/psightenginebackenddjango}
+un  ${XDG_UDJA_BACKEND_DIR:-$HOME/Work/Udja/udja-nextjs}
+uts  ${XDG_UDJA_BACKEND_DIR:-$HOME/Work/Udja/TS}
+p  ${XDG_PICTURES_DIR:-$HOME/Pictures}
+v  ${XDG_VIDEOS_DIR:-$HOME/Videos}
