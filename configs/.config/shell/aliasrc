@@ -48,6 +48,8 @@ alias \
 	v="$EDITOR" \
 	t="touch" \
 	p="pacman" \
+	P="paru" \
+	PS="paru -S" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
@@ -59,5 +61,4 @@ alias \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
-	run="sh ~/.scripts/runservers.sh" \
-	tm="~/.scripts/fibs_proj.sh"
+	run="sh ~/.scripts/runservers.sh"

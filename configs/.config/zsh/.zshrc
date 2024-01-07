@@ -93,3 +93,6 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 export BUN_INSTALL="$HOME/.bun" 
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=$HOME/.config/rofi/scripts:$PATH
+export PATH=/usr/local/pgsql/bin:$PATH
+
+eval $(thefuck --alias)

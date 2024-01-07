@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+
+service="wireguard"
+
+# Check the status of the WireGuard service
+status=$(sudo rc-service $service status)
+echo "$status"
+
+# Check if the WireGuard service is currently running
+if [[ $status == " * status: started" ]]; then
+	dunstify -a "WireGuard" "Stopping WireGuard..." -t 2000
+	# Stop the WireGuard service
+	sudo rc-service $service stop
+else
+	# Start the WireGuard service
+	dunstify -a "WireGuard" "Starting WireGuard..." -t 2000
+	sudo rc-service $service start
+fi
