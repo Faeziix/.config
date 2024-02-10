@@ -1,9 +1,0 @@
-#!/bin/sh
-
-printf " %s" "$(~/.wakatime/wakatime-cli --today)"
-
-link="https://wakatime.com/dashboard/day?date=$(date +"%D")"
-
-case $BLOCK_BUTTON in
-  1) notify-send "Loading..."; brave "$(echo $link)"
-esac

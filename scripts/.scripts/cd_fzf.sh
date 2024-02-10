@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to your .projects file
-PROJECTS_FILE="/home/faezdwm/.projects"
+PROJECTS_FILE="/home/faezix/.projects"
 
 # Check if the .projects file exists
 if [ ! -f "$PROJECTS_FILE" ]; then

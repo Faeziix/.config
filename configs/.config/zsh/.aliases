@@ -1,0 +1,106 @@
+# vim: filetype=sh
+alias C="cd /home/faezix/.cache" \
+	c='cd $(find /home/faezix/.config -maxdepth 1 | fzf) ' \
+	dn="cd /home/faezix/Downloads" \
+	dc="cd /home/faezix/Documents" \
+	l="cd /home/faezix/.local" \
+	h="cd /home/faezix" \
+	w="cd /home/faezix/Work" \
+	u='cd $(~/.scripts/cd_fzf.sh)' \
+	tu='~/.scripts/udja_proj.sh' \
+	uf="cd /home/faezix/Work/Udja/FrontEnd" \
+	up="cd /home/faezix/Work/Udja/psightenginebackenddjango" \
+	un="cd /home/faezix/Work/Udja/udja-nextjs" \
+	uts="cd /home/faezix/Work/Udja/TS" \
+	p="cd /home/faezix/Pictures" \
+	vfz="$EDITOR /home/faezix/.config/zsh/.zshrc" \
+
+alias shutdown='sudo shutdown now'
+alias restart='sudo reboot'
+alias suspend='sudo pm-suspend'
+
+alias z='zathura'
+
+# +----+
+# | ls |
+# +----+
+
+alias ls='exa --color=auto'
+alias l='exa -l'
+alias ll='exa -lahF'
+alias lls='exa -lahFtr'
+alias la='exa -A'
+alias lc='exa -CF'
+
+# +----+
+# | cp |
+# +----+
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias la='ls -alh'
+
+# +--------+
+# | pacman |
+# +--------+
+
+alias paci='sudo pacman -S'               # install
+alias pachi='sudo pacman -Ql'             # Pacman Has Installed - what files where installed in a package
+alias pacs='sudo pacman -Ss'              # search
+alias pacu='sudo pacman -Syu'             # update
+alias pacr='sudo pacman -R'               # remove package but not dependencies
+alias pacrr='sudo pacman -Rs'             # remove package with unused dependencies by other softwares
+alias pacrc='sudo pacman -Sc'             # remove pacman's cache
+alias pacro='pacman -Rns $(pacman -Qtdq)'
+alias pacrl='rm /var/lib/pacman/db.lck'   # pacman remove locks
+alias pacls="sudo pacman -Qe"
+alias pacc='sudo pacman -Sc'
+alias paccc='sudo pacman -Scc'            # empty the whole cache
+
+# +-------+
+# | fonts |
+# +-------+
+
+alias fonts='fc-cache -f -v'
+
+# +-----+
+# | yay |
+# +-----+
+
+alias yayi='yay -S'     # install
+alias yayhi='yay -Ql'   # Yay Has Installed - what files where installed in a package
+alias yays='yay -Ss'    # search
+alias yayu='yay -Syu'   # update
+alias yayr='yay -R'     # remove package but not dependencies
+alias yayrr='yay -Rs'   # remove package with unused dependencies by other softwares
+alias yayrc='yay -Sc'   # remove yay's cache
+alias yayls="yay -Qe"
+
+# +-----+
+# | Git |
+# +-----+
+
+alias gs='git status'
+alias gss='git status -s'
+alias ga='git add'
+alias gp='git push'
+alias gpraise='git blame'
+alias gpo='git push origin'
+alias gplo='git pull origin'
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout '
+alias gl='git log --pretty=oneline'
+alias gr='git remote'
+alias grs='git remote show'
+alias glol='git log --graph --abbrev-commit --oneline --decorate'
+
+# +------+
+# | nvim |
+# +------+
+
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'

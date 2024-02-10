@@ -6,7 +6,7 @@ PROJECTS_HISTORY_FILE="$HOME/.projects_history"
 touch "$PROJECTS_FILE"
 touch "$PROJECTS_HISTORY_FILE"
 
-source ~/.zshenv
+source "$HOME/.zshenv"
 
 dir_to_str() {
 	local str="$1"
