@@ -25,12 +25,12 @@ alias z='zathura'
 # | ls |
 # +----+
 
-alias ls='exa --color=auto'
-alias l='exa -l'
-alias ll='exa -lahF'
-alias lls='exa -lahFtr'
-alias la='exa -A'
-alias lc='exa -CF'
+alias ls="exa --color=auto"
+alias l="exa -l"
+alias ll="exa -lahF"
+alias lls="exa -lahFtr"
+alias la="exa -A"
+alias lc="exa -CF"
 
 # +----+
 # | cp |
@@ -45,18 +45,18 @@ alias la='ls -alh'
 # | pacman |
 # +--------+
 
-alias paci='sudo pacman -S'               # install
-alias pachi='sudo pacman -Ql'             # Pacman Has Installed - what files where installed in a package
-alias pacs='sudo pacman -Ss'              # search
-alias pacu='sudo pacman -Syu'             # update
-alias pacr='sudo pacman -R'               # remove package but not dependencies
-alias pacrr='sudo pacman -Rs'             # remove package with unused dependencies by other softwares
-alias pacrc='sudo pacman -Sc'             # remove pacman's cache
+alias pacman="sudo pacman --color auto"
+
+alias sps='sudo pacman -S'               # install
+alias spql='sudo pacman -Ql'             # Pacman Has Installed - what files where installed in a package
+alias spss='sudo pacman -Ss'              # search
+alias spsyu='sudo pacman -Syu'             # update
+alias spr='sudo pacman -R'               # remove package but not dependencies
+alias spsrs='sudo pacman -Rs'             # remove package with unused dependencies by other softwares
+alias spsc='sudo pacman -Sc'             # remove pacman's cache
 alias pacro='pacman -Rns $(pacman -Qtdq)'
-alias pacrl='rm /var/lib/pacman/db.lck'   # pacman remove locks
-alias pacls="sudo pacman -Qe"
-alias pacc='sudo pacman -Sc'
-alias paccc='sudo pacman -Scc'            # empty the whole cache
+
+alias unlock='rm /var/lib/pacman/db.lck'   # pacman remove locks
 
 # +-------+
 # | fonts |
@@ -104,3 +104,19 @@ alias glol='git log --graph --abbrev-commit --oneline --decorate'
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
+
+#nvim for important configuration files
+alias npacman="sudo $EDITOR /etc/pacman.conf"
+alias ngrub="sudo $EDITOR /etc/default/grub"
+alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
+alias nsddm="sudo $EDITOR /etc/sddm.conf"
+alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
+alias nz="$EDITOR $ZDOTDIR/.zshrc"
+alias nenvironment="sudo $EDITOR /etc/environment"
+
+alias nwaybar="$EDITOR $XDG_CONFIG_HOME/waybar/config.ctl"
+alias nhypr="$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf"
+alias nhyprkeys="$EDITOR $XDG_CONFIG_HOME/hypr/keybindings.conf"
+alias nnvim="$EDITOR $XDG_CONFIG_HOME/nvim/"
+alias nkitty="$EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf"
+alias nlf="$EDITOR $XDG_CONFIG_HOME/lf/lfrc"
