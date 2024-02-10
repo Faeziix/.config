@@ -26,35 +26,37 @@ window {
     spacing:                     0px;
     padding:                     0px;
     border:                      2px;
-    border-radius:               40px;
+    border-radius:               25px;
     border-color:                @main-br;
     background-color:            transparent;
 }
 mainbox {
     enabled:                     true;
     spacing:                     0px;
-    orientation:                 horizontal;
-    children:                    [ "listmode" , "inputbar" ];
+    padding:                     0px;
+    orientation:                 vertical;
+    children:                    [ "listbox" , "inputbar"];
     background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.rofi", height);
+}
+
+
+// Inputs //
+inputbar {
+    enabled:                     false;
 }
 
 
 // Lists //
-listmode {
-    enabled:                     true;
-    children:                    [ "listbox" , "mode-switcher" ];
-    background-color:            transparent;
+listbox {
+    padding:                     5px;
+    spacing:                     5px;
+    orientation:                 horizontal;
+    children:                    [ "mode-switcher" , "listview" ];
     background-image:            url("~/.config/swww/wall.blur", height);
 }
-listbox {
-    spacing:                     5px;
-    padding:                     10px;
-    children:                    [ "listview" ];
-    background-color:            transparent;
-}
 listview {
-    padding:                     15px;
+    padding:                     20px;
+    spacing:                     5px;
     enabled:                     true;
     columns:                     1;
     cycle:                       true;
@@ -67,20 +69,17 @@ listview {
     cursor:                      "default";
     background-color:            @main-bg;
     text-color:                  @main-fg;
-    border-radius:               30px;
+    border-radius:               25px;
 }
-
-
-// Modes //
-mode-switcher{
-    orientation:                 horizontal;
+mode-switcher {
+    orientation:                 vertical;
+    width:                       100px;
     enabled:                     true;
-    spacing:                     18px;
-    padding:                     10px 180px 20px 40px;
+    padding:                     60px 10px 60px 10px;
+    spacing:                     15px;
     background-color:            transparent;
 }
 button {
-    padding:                     12px;
     cursor:                      pointer;
     border-radius:               50px;
     background-color:            @main-bg;
@@ -92,23 +91,11 @@ button selected {
 }
 
 
-// Inputs //
-inputbar {
-    enabled:                     true;
-    width:                       150px;
-    children:                    [ "entry" ];
-    background-color:            transparent;
-}
-entry {
-    enabled:                     false;
-}
-
-
 // Elements //
 element {
     enabled:                     true;
-    spacing:                     20px;
-    padding:                     6px;
+    spacing:                     30px;
+    padding:                     10px;
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
@@ -124,7 +111,7 @@ element selected.normal {
     text-color:                  @select-fg;
 }
 element-icon {
-    size:                        48px;
+    size:                        50px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
