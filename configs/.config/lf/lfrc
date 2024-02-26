@@ -9,7 +9,6 @@ set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope' # Vars that depend on environmental variables
-# $lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
 
 # cmds/functions
 cmd open ${{
@@ -74,11 +73,8 @@ cmd setbg "$1"
 cmd bulkrename $vidir
 
 # Bindings
-source "~/.config/lf/shortcutrc"
-map <c-f> $lf -remote "send $id select '$(fzf)'"
-map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
-map gh
-map g top
+map <c-f> $lf -remote "send $id cd $(fd | fzf --preview 'tree -C ' )"
+map Kc $lf -remote "send $id cd $(fd -t d -L --full-path --max-depth 2 --hidden '/home/faezix/.config' | fzf --preview 'tree -C ' )"
 map D delete
 map E extract
 map C copyto
@@ -93,17 +89,32 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 
 map A rename # at the very end
-map c push A<c-u> # new rename
 map I push A<c-a> # at the very beginning
 map i push A<a-b><a-b><a-f> # before extention
 map a push A<a-b> # after extention
 map B bulkrename
-map b $setbg $f
 
-map <c-e> down
-map <c-y> up
 map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
 
 # Source Bookmarks
+map gc cd ~/.config
+map gl cd ~/.local
+map gw cd ~/Work
+
+# bash
+
+cmd z %{{
+  result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+
+cmd zi ${{
+  result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+
+cmd on-cd &{{
+  zoxide add "$PWD"
+}}

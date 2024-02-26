@@ -6,6 +6,9 @@ setopt nonomatch           # hide error message if there is no match for the pat
 setopt notify              # report the status of background jobs immediately
 setopt numericglobsort     # sort filenames numerically when it makes sense
 setopt promptsubst         # enable command substitution in prompt
+setopt auto_pushd           # Push the current directory visited on the stack.
+setopt pushd_ignore_dups    # Do not store duplicates in the stack.
+setopt pushd_silent         # Do not print the directory stack after pushd or popd.
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 
@@ -18,33 +21,42 @@ source "$ZDOTDIR/.aliases"
 # Activate vim mode.
 bindkey -v
 
+set keymap vi-command
 # Remove mode switching delay.
 KEYTIMEOUT=1
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
 
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
 }
 
-zle -N zle-keymap-select
+cursor_mode
 
-# Use beam shape cursor on startup.
-echo -ne '\e[5 q'
-
-# Use beam shape cursor for each new prompt.
-preexec() {
-   echo -ne '\e[5 q'
-}
-
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 #
 # auto-completion config
 # ---------------
@@ -105,13 +117,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias diff='diff --color=auto'
     alias ip='ip --color=auto'
 
-    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+    export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+    export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+    export LESS_TERMCAP_me=$(tput sgr0)
+    export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+    export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+    export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+    export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+    export LESS_TERMCAP_mr=$(tput rev)
+    export LESS_TERMCAP_mh=$(tput dim)
+    export LESS_TERMCAP_ZN=$(tput ssubm)
+    export LESS_TERMCAP_ZV=$(tput rsubm)
+    export LESS_TERMCAP_ZO=$(tput ssupm)
+    export LESS_TERMCAP_ZW=$(tput rsupm)
+    export GROFF_NO_SGR=1
 
     # Take advantage of $LS_COLORS for completion as well
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -129,3 +149,11 @@ bindkey '^e' edit-command-line
 
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship-prompt/starship.toml
+
+source "$ZDOTDIR/bd.zsh"
+
+#
+# SSH config
+# ---------------
+
+eval "$(zoxide init zsh)"

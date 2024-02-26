@@ -12,7 +12,7 @@ source $ScrDir/globalcontrol.sh
 # Check for updates
 get_aurhlpr
 aur=`${aurhlpr} -Qua | wc -l`
-ofc=`checkupdates | wc -l`
+ofc=`checkupdates -u | wc -l`
 
 # Check for flatpak updates
 if pkg_installed flatpak ; then

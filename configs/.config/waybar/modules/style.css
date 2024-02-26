@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0px;
     font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
+    font-weight: 800;
     font-size: ${s_fontpx}px;
     min-height: 10px;
 }

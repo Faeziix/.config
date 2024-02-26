@@ -1,36 +1,37 @@
 # vim: filetype=sh
-alias C="cd /home/faezix/.cache" \
-	c='cd $(find /home/faezix/.config -maxdepth 1 | fzf) ' \
-	dn="cd /home/faezix/Downloads" \
-	dc="cd /home/faezix/Documents" \
-	l="cd /home/faezix/.local" \
-	h="cd /home/faezix" \
-	w="cd /home/faezix/Work" \
-	u='cd $(~/.scripts/cd_fzf.sh)' \
+alias C="z /home/faezix/.cache" \
+	c='z $(find /home/faezix/.config -maxdepth 1 | fzf) ' \
+	dn="z /home/faezix/Downloads" \
+	dc="z /home/faezix/Documents" \
+	l="z /home/faezix/.local" \
+	h="z /home/faezix" \
+	w="z /home/faezix/Work" \
+	u='z $(~/.scripts/cd_fzf.sh)' \
 	tu='~/.scripts/udja_proj.sh' \
-	uf="cd /home/faezix/Work/Udja/FrontEnd" \
-	up="cd /home/faezix/Work/Udja/psightenginebackenddjango" \
-	un="cd /home/faezix/Work/Udja/udja-nextjs" \
-	uts="cd /home/faezix/Work/Udja/TS" \
-	p="cd /home/faezix/Pictures" \
+	uf="z /home/faezix/Work/Udja/FrontEnd" \
+	up="z /home/faezix/Work/Udja/psightenginebackenddjango" \
+	un="z /home/faezix/Work/Udja/udja-nextjs" \
+	uts="z /home/faezix/Work/Udja/TS" \
+	p="z /home/faezix/Pictures" \
 	vfz="$EDITOR /home/faezix/.config/zsh/.zshrc" \
 
 alias shutdown='sudo shutdown now'
 alias restart='sudo reboot'
 alias suspend='sudo pm-suspend'
 
-alias z='zathura'
+alias ztr='zathura'
+alias cd="z"
+alias ka="killall"
 
 # +----+
 # | ls |
 # +----+
 
-alias ls="exa --color=auto"
-alias l="exa -l"
-alias ll="exa -lahF"
-alias lls="exa -lahFtr"
-alias la="exa -A"
-alias lc="exa -CF"
+alias ls="lsd --color=auto --group-directories-first"
+alias l="lsd -l --group-directories-first"
+alias ll="lsd -lahF --group-directories-first"
+alias lls="lsd -lahFtr"
+alias la='ls -alh --group-directories-first'
 
 # +----+
 # | cp |
@@ -39,7 +40,6 @@ alias lc="exa -CF"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias la='ls -alh'
 
 # +--------+
 # | pacman |
@@ -112,6 +112,7 @@ alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
 alias nsddm="sudo $EDITOR /etc/sddm.conf"
 alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
 alias nz="$EDITOR $ZDOTDIR/.zshrc"
+alias nza="$EDITOR $ZDOTDIR/.aliases"
 alias nenvironment="sudo $EDITOR /etc/environment"
 
 alias nwaybar="$EDITOR $XDG_CONFIG_HOME/waybar/config.ctl"
@@ -120,3 +121,10 @@ alias nhyprkeys="$EDITOR $XDG_CONFIG_HOME/hypr/keybindings.conf"
 alias nnvim="$EDITOR $XDG_CONFIG_HOME/nvim/"
 alias nkitty="$EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf"
 alias nlf="$EDITOR $XDG_CONFIG_HOME/lf/lfrc"
+
+# +-----------+
+# | Directory |
+# +-----------+
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="z +${index}"; unset index

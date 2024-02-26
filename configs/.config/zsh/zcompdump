@@ -1,4 +1,4 @@
-#files: 804	version: 5.9
+#files: 824	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -92,6 +92,7 @@ _comps=(
 'Mail' '_mail'
 'Mosaic' '_webbrowser'
 '_arguments' '__arguments'
+'_nvme' '_nvme'
 'a2ps' '_a2ps'
 'aaaa' '_hosts'
 'aap' '_aap'
@@ -146,6 +147,7 @@ _comps=(
 'atrm' '_at'
 'attr' '_attr'
 'augtool' '_augeas'
+'aur' '_aur'
 'autoload' '_typeset'
 'avahi-browse' '_avahi'
 'avahi-browse-domains' '_avahi'
@@ -168,6 +170,8 @@ _comps=(
 'bibtex' '_bibtex'
 'bindkey' '_bindkey'
 'bison' '_bison'
+'black' '_black'
+'blackd' '_blackd'
 'bluetoothctl' '_bluetoothctl'
 'bmake' '_make'
 'bogofilter' '_bogofilter'
@@ -185,6 +189,7 @@ _comps=(
 'brctl' '_brctl'
 'bsdgrep' '_grep'
 'bsdtar' '_tar'
+'bspc' '_bspc'
 'btdownloadcurses' '_bittorrent'
 'btdownloadgui' '_bittorrent'
 'btdownloadheadless' '_bittorrent'
@@ -231,6 +236,7 @@ _comps=(
 'chattr' '_chattr'
 'chcon' '_chcon'
 'chdir' '_cd'
+'checkupdates' '_checkupdates'
 'chfn' '_users'
 'chgrp' '_chown'
 'chimera' '_webbrowser'
@@ -335,6 +341,7 @@ _comps=(
 'dmesg' '_dmesg'
 'dmidecode' '_dmidecode'
 'doas' '_doas'
+'docker' '_docker'
 'domainname' '_yp'
 'dos2unix' '_dos2unix'
 'drill' '_drill'
@@ -771,6 +778,7 @@ _comps=(
 'ls' '_ls'
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
+'lsd' '_lsd'
 'lsdiff' '_patchutils'
 'lsinitcpio' '_mkinitcpio'
 'lsmod' '_modutils'
@@ -926,6 +934,7 @@ _comps=(
 'ntalk' '_other_accounts'
 'numfmt' '_numfmt'
 'nvim' '_vim'
+'nvme' '_nvme'
 'objdump' '_objdump'
 'od' '_od'
 'ogg123' '_vorbis'
@@ -945,14 +954,22 @@ _comps=(
 'p4' '_perforce'
 'p4d' '_perforce'
 'pacat' '_pulseaudio'
+'paccache' '_paccache'
+'pacdiff' '_pacdiff'
 'pack' '_pack'
 'packf' '_mh'
+'paclist' '_paclist'
+'paclog-pkglist' '_paclog-pkglist'
 'pacman' '_pacman'
 'pacman-conf' '_pacman'
 'pacman-key' '_pacman'
 'pacman.static' '_pacman'
 'pacmd' '_pulseaudio'
+'pacscripts' '_pacscripts'
+'pacsearch' '_pacsearch'
+'pacsort' '_pacsort'
 'pactl' '_pulseaudio'
+'pactree' '_pactree'
 'padsp' '_pulseaudio'
 'pandoc' '_pandoc'
 'paplay' '_pulseaudio'
@@ -1085,6 +1102,7 @@ _comps=(
 'quilt' '_quilt'
 'r' '_fc'
 'rake' '_rake'
+'rankmirrors' '_rankmirrors'
 'ranlib' '_ranlib'
 'rar' '_rar'
 'rc' '_sh'
@@ -1294,6 +1312,7 @@ _comps=(
 'tkconch' '_twisted'
 'tkinfo' '_texinfo'
 'tla' '_tla'
+'tldr' '_tldr'
 'tload' '_tload'
 'tmux' '_tmux'
 'todo' '_devtodo'
@@ -1360,6 +1379,7 @@ _comps=(
 'unwrapdiff' '_patchutils'
 'unxz' '_xz'
 'unzip' '_zip'
+'updpkgsums' '_updpkgsums'
 'uptime' '_uptime'
 'urxvt' '_urxvt'
 'urxvt256c' '_urxvt'
@@ -1522,6 +1542,7 @@ _comps=(
 'zmodload' '_zmodload'
 'zmv' '_zmv'
 'zone' '_hosts'
+'zoxide' '_zoxide'
 'zparseopts' '_zparseopts'
 'zpool' '_zfs'
 'zpty' '_zpty'
@@ -1649,14 +1670,18 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _bat _bluetoothctl _busctl _bwrap _cargo \
-            _curl _eza _fd _flatpak _glow \
-            _img2sixel _kitty _lf _libinput _loginctl \
-            _meson _mkinitcpio _mpv _ninja _openrc \
-            _pacman _parallel _pip _playerctl _pulseaudio \
-            _rc-service _rc-status _rc-update _rg _sqv \
-            _swayidle _swaylock _swww _udisks2 _wl-copy \
-            _wl-paste _wlogout _wpctl _yay _zathura \
+autoload -Uz _aur _bat _black _blackd _bluetoothctl \
+            _bspc _busctl _bwrap _cargo _checkupdates \
+            _curl _docker _eza _fd _flatpak \
+            _glow _img2sixel _kitty _lf _libinput \
+            _loginctl _lsd _meson _mkinitcpio _mpv \
+            _ninja _nvme _openrc _paccache _pacdiff \
+            _paclist _paclog-pkglist _pacman _pacscripts _pacsearch \
+            _pacsort _pactree _parallel _pip _playerctl \
+            _pulseaudio _rankmirrors _rc-service _rc-status _rc-update \
+            _rg _sqv _swayidle _swaylock _swww \
+            _tldr _udisks2 _updpkgsums _wl-copy _wl-paste \
+            _wlogout _wpctl _yay _zathura _zoxide \
             _cdr _all_labels _all_matches _alternative _approximate \
             _arg_compile _arguments _bash_completions _cache_invalid _call_function \
             _combination _comp_locale _complete _complete_debug _complete_help \
