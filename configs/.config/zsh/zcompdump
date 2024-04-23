@@ -1,4 +1,4 @@
-#files: 824	version: 5.9
+#files: 829	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -218,6 +218,11 @@ _comps=(
 'cabal' '_cabal'
 'cal' '_cal'
 'calendar' '_calendar'
+'calibre' '_calibre'
+'calibre-debug' '_calibre'
+'calibre-server' '_calibre'
+'calibre-smtp' '_calibre'
+'calibredb' '_calibre'
 'cargo' '_cargo'
 'cat' '_cat'
 'catchsegv' '_precommand'
@@ -298,6 +303,7 @@ _comps=(
 'ctags' '_ctags'
 'ctags-exuberant' '_ctags'
 'ctags-universal' '_ctags'
+'ctr' '_ctr'
 'curl' '_curl'
 'cut' '_cut'
 'cvs' '_cvs'
@@ -363,6 +369,11 @@ _comps=(
 'dwb' '_webbrowser'
 'e2label' '_e2label'
 'eatmydata' '_precommand'
+'ebook-convert' '_calibre'
+'ebook-edit' '_calibre'
+'ebook-meta' '_calibre'
+'ebook-polish' '_calibre'
+'ebook-viewer' '_calibre'
 'ecasound' '_ecasound'
 'echotc' '_echotc'
 'echoti' '_echoti'
@@ -405,6 +416,7 @@ _comps=(
 'fc-match' '_xft_fonts'
 'fd' '_fd'
 'feh' '_feh'
+'fetch-ebook-metadata' '_calibre'
 'fetchmail' '_fetchmail'
 'ffmpeg' '_ffmpeg'
 'fg' '_jobs_fg'
@@ -775,6 +787,8 @@ _comps=(
 'lpr' '_lp'
 'lprm' '_lp'
 'lpstat' '_lp'
+'lrf2lrs' '_calibre'
+'lrfviewer' '_calibre'
 'ls' '_ls'
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
@@ -1099,6 +1113,7 @@ _comps=(
 'pyhtmlizer' '_twisted'
 'qdbus' '_qdbus'
 'qiv' '_qiv'
+'qrcp' '_qrcp'
 'quilt' '_quilt'
 'r' '_fc'
 'rake' '_rake'
@@ -1156,6 +1171,7 @@ _comps=(
 'run-help' '_run-help'
 'rup' '_hosts'
 'rusage' '_precommand'
+'rustup' '_rustup'
 'rview' '_vim'
 'rvim' '_vim'
 'rwho' '_hosts'
@@ -1348,6 +1364,7 @@ _comps=(
 'txt' '_hosts'
 'type' '_which'
 'typeset' '_typeset'
+'udevadm' '_udevadm'
 'udisksctl' '_udisks2'
 'ulimit' '_ulimit'
 'uml_mconsole' '_uml'
@@ -1671,16 +1688,17 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _aur _bat _black _blackd _bluetoothctl \
-            _bspc _busctl _bwrap _cargo _checkupdates \
-            _curl _docker _eza _fd _flatpak \
-            _glow _img2sixel _kitty _lf _libinput \
-            _loginctl _lsd _meson _mkinitcpio _mpv \
-            _ninja _nvme _openrc _paccache _pacdiff \
-            _paclist _paclog-pkglist _pacman _pacscripts _pacsearch \
-            _pacsort _pactree _parallel _pip _playerctl \
-            _pulseaudio _rankmirrors _rc-service _rc-status _rc-update \
-            _rg _sqv _swayidle _swaylock _swww \
-            _tldr _udisks2 _updpkgsums _wl-copy _wl-paste \
+            _bspc _busctl _bwrap _calibre _cargo \
+            _checkupdates _ctr _curl _docker _eza \
+            _fd _flatpak _glow _img2sixel _kitty \
+            _lf _libinput _loginctl _lsd _meson \
+            _mkinitcpio _mpv _ninja _nvme _openrc \
+            _paccache _pacdiff _paclist _paclog-pkglist _pacman \
+            _pacscripts _pacsearch _pacsort _pactree _parallel \
+            _pip _playerctl _pulseaudio _qrcp _rankmirrors \
+            _rc-service _rc-status _rc-update _rg _rustup \
+            _sqv _swayidle _swaylock _swww _tldr \
+            _udevadm _udisks2 _updpkgsums _wl-copy _wl-paste \
             _wlogout _wpctl _yay _zathura _zoxide \
             _cdr _all_labels _all_matches _alternative _approximate \
             _arg_compile _arguments _bash_completions _cache_invalid _call_function \

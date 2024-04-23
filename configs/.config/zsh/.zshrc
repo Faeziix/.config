@@ -61,6 +61,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # auto-completion config
 # ---------------
 
+fpath=(~/.stripe $fpath)
+
 autoload -Uz compinit
 compinit -i
 bindkey ' ' magic-space                           # do history expansion on space
