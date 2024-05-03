@@ -4,142 +4,37 @@
 // sourced from header module //
 
     "layer": "top",
-    "position": "bottom",
+    "position": "right",
     "mod": "dock",
-    "height": 31,
+    "": 32,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
+    "reload_style_on_change": true,
 
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/l_end","cpu","memory","custom/r_end","custom/l_end","hyprland/window","custom/r_end","","custom/padd"],
-	"modules-center": ["custom/padd","","custom/l_end","","hyprland/workspaces","custom/r_end","","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","backlight","network","bluetooth","pulseaudio","pulseaudio#microphone","custom/updates","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/padd"],
+	"modules-left": ["custom/padd","","custom/padd"],
+	"modules-center": ["custom/padd","custom/l_end","custom/power","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","wlr/taskbar","idle_inhibitor","clock","custom/r_end","custom/l_end","custom/cliphist","custom/r_end","custom/l_end","custom/wbar","custom/r_end","custom/l_end","custom/wallchange","custom/r_end","custom/l_end","custom/theme","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
-    "cpu": {
-        "interval": 2,
-        "format": "󰍛 {usage}%",
-        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
-    },
-
-    "memory": {
-        "interval": 10,
-        "format": "󰾅 {used}GB",
-        "max-length": 10,
-        "tooltip": true,
-        "tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
-    },
-
-    "hyprland/window": {
-        "format": "  {}",
-        "separate-outputs": true,
-        "rewrite": {
-            "faezix@:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
-            "(.*)Mozilla Firefox": "Firefox 󰈹",
-            "(.*) - Visual Studio Code": "$1 󰨞",
-            "(.*)Visual Studio Code": "Code 󰨞",
-            "(.*) — Dolphin": "$1 󰉋",
-            "(.*)Spotify": "Spotify 󰓇",
-            "(.*)Steam": "Steam 󰓓"
-        },
-        "max-length": 1000
-    },
-
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "active-only": false,
-        "on-click": "activate",
-        "persistent-workspaces": {
-        }
-    },
-
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 6
-    },
-
-    "network": {
-        "interface": "wlan0",
-        "tooltip": true,
-        "format-wifi": "  {essid}",
-        "format-ethernet": "󰈀 ",
-        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-        "format-linked": "󰈀 {ifname} (No IP)",
-        "format-disconnected": "󰖪 ",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2,
-    },
-
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "",
-        "format-connected": " {num_connections}",
-        "format-connected-battery": "{icon} {num_connections}",
-        // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
-        "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
-        "tooltip-format": "{controller_alias}\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
-    },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}",
-        "format-muted": "󰖁",
-        "on-click": "pavucontrol -t 3",
-        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -o m",
-        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -o i",
-        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -o d",
-        "tooltip-format": "{icon} {desc} // {volume}%",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        }
-    },
-
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "󰍬",
-        "format-source-muted": "",
-        "on-click": "pavucontrol -t 4",
-        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -i m",
-        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -i i",
-        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -i d",
-        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
-        "scroll-step": 5
-    },
-
-    "custom/updates": {
-        "exec": "~/.config/hypr/scripts/systemupdate.sh",
-        "return-type": "json",
-        "format": "󰮯 {}",
-        "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
-        "interval": 86400, // once every day
-        "tooltip": true,
+    "custom/power": {
+        "format": "{}",
+        "rotate": ,
+        "exec": "echo ; echo  logout",
+        "on-click": "logoutlaunch.sh 2",
+        "on-click-right": "logoutlaunch.sh 1",
+        "interval" : 86400, // once every day
+        "tooltip": true
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 19,
+        "rotate": ,
         "spacing": 5
     },
 
@@ -150,14 +45,33 @@
             "critical": 20
         },
         "format": "{icon} {capacity}%",
+        "rotate": ,
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
 
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"rotate": ,
+		"icon-size": 19,
+		"icon-theme": "Tela-circle-purple",
+        "spacing": 0,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+
     "idle_inhibitor": {
         "format": "{icon}",
+        "rotate": ,
         "format-icons": {
             "activated": "󰥔",
             "deactivated": ""
@@ -166,6 +80,7 @@
 
     "clock": {
         "format": "{:%I:%M %p}",
+        "rotate": ,
         "format-alt": "{:%R 󰃭 %d·%m·%y}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
@@ -186,6 +101,50 @@
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down"
         }
+    },
+
+    "custom/cliphist": {
+        "format": "{}",
+        "rotate": ,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && cliphist.sh c",
+        "on-click-right": "sleep 0.1 && cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && cliphist.sh w",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/wbar": {
+        "format": "{}", //    //
+        "rotate": ,
+        "exec": "echo ; echo  switch bar //  dock",
+        "on-click": "wbarconfgen.sh n",
+        "on-click-right": "wbarconfgen.sh p",
+        "on-click-middle": "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin",
+        "interval" : 86400,
+        "tooltip": true
+    },
+
+    "custom/wallchange": {
+        "format": "{}",
+        "rotate": ,
+        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "on-click": "swwwallpaper.sh -n",
+        "on-click-right": "swwwallpaper.sh -p",
+        "on-click-middle": "sleep 0.1 && swwwallselect.sh",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/theme": {
+        "format": "{}",
+        "rotate": ,
+        "exec": "echo ; echo 󰟡 switch theme",
+        "on-click": "themeswitch.sh -n",
+        "on-click-right": "themeswitch.sh -p",
+        "on-click-middle": "sleep 0.1 && themeselect.sh",
+        "interval" : 86400, // once every day
+        "tooltip": true
     },
 
 

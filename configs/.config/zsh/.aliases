@@ -116,7 +116,7 @@ alias nza="$EDITOR $ZDOTDIR/.aliases"
 alias nenvironment="sudo $EDITOR /etc/environment"
 
 alias nwaybar="$EDITOR $XDG_CONFIG_HOME/waybar/config.ctl"
-alias nhypr="$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf"
+alias nhypr="$EDITOR $XDG_CONFIG_HOME/hypr/userprefs.conf"
 alias nhyprkeys="$EDITOR $XDG_CONFIG_HOME/hypr/keybindings.conf"
 alias nnvim="$EDITOR $XDG_CONFIG_HOME/nvim/"
 alias nkitty="$EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf"

@@ -2,12 +2,12 @@
     border: none;
     border-radius: 0px;
     font-family: "JetBrainsMono Nerd Font";
-    font-weight: 800;
-    font-size: 11px;
+    font-weight: bold;
+    font-size: 12px;
     min-height: 10px;
 }
 
-@import "themes/theme.css";
+@import "theme.css";
 
 window#waybar {
     background: @bar-bg;
@@ -16,7 +16,7 @@ window#waybar {
 tooltip {
     background: @main-bg;
     color: @main-fg;
-    border-radius: 7px;
+    border-radius: 8px;
     border-width: 0px;
 }
 
@@ -25,12 +25,12 @@ tooltip {
 	text-shadow: none;
     padding: 0px;
     border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
+    margin-: 3px;
+    margin-: 3px;
+    margin-: 0px;
+    padding-: 3px;
+    padding-: 3px;
+    margin-: 0px;
     color: @main-fg;
     animation: ws_normal 20s ease-in-out 1;
 }
@@ -38,10 +38,10 @@ tooltip {
 #workspaces button.active {
     background: @wb-act-bg;
     color: @wb-act-fg;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
+    margin-: 3px;
+    padding-: 12px;
+    padding-: 12px;
+    margin-: 3px;
     animation: ws_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
@@ -58,31 +58,31 @@ tooltip {
 	text-shadow: none;
     padding: 0px;
     border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
+    margin-: 3px;
+    margin-: 3px;
+    margin-: 0px;
+    padding-: 3px;
+    padding-: 3px;
+    margin-: 0px;
     color: @wb-color;
-    animation: tb_normal 30s ease-in-out 1;
+    animation: tb_normal 20s ease-in-out 1;
 }
 
 #taskbar button.active {
     background: @wb-act-bg;
     color: @wb-act-color;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    animation: tb_active 30s ease-in-out 1;
+    margin-: 3px;
+    padding-: 12px;
+    padding-: 12px;
+    margin-: 3px;
+    animation: tb_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #taskbar button:hover {
     background: @wb-hvr-bg;
     color: @wb-hvr-color;
-    animation: tb_hover 30s ease-in-out 1;
+    animation: tb_hover 20s ease-in-out 1;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
@@ -98,7 +98,6 @@ tooltip {
 #custom-keybindhint,
 #language,
 #memory,
-#custom-mode,
 #mpris,
 #network,
 #custom-notifications,
@@ -122,9 +121,9 @@ tooltip {
     color: @main-fg;
     background: @main-bg;
     opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+    margin: px px px px;
+    padding-: 4px;
+    padding-: 4px;
 }
 
 #workspaces,
@@ -133,37 +132,37 @@ tooltip {
 }
 
 #custom-r_end {
-    border-radius: 0px 21px 21px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    border-radius: px px px px;
+    margin-: 9px;
+    padding-: 3px;
 }
 
 #custom-l_end {
-    border-radius: 21px 0px 0px 21px;
-    margin-left: 9px;
-    padding-left: 3px;
+    border-radius: px px px px;
+    margin-: 9px;
+    padding-: 3px;
 }
 
 #custom-sr_end {
     border-radius: 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    margin-: 9px;
+    padding-: 3px;
 }
 
 #custom-sl_end {
     border-radius: 0px;
-    margin-left: 9px;
-    padding-left: 3px;
+    margin-: 9px;
+    padding-: 3px;
 }
 
 #custom-rr_end {
-    border-radius: 0px 7px 7px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    border-radius: px px px px;
+    margin-: 9px;
+    padding-: 3px;
 }
 
 #custom-rl_end {
-    border-radius: 7px 0px 0px 7px;
-    margin-left: 9px;
-    padding-left: 3px;
+    border-radius: px px px px;
+    margin-: 9px;
+    padding-: 3px;
 }
