@@ -111,6 +111,7 @@ if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
 
     bindkey '^ ' autosuggest-execute
     bindkey '^K' autosuggest-accept
+    ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 fi
 
 # enable syntax-highlighting
