@@ -67,19 +67,29 @@ autoload -Uz compinit
 compinit -i
 bindkey ' ' magic-space                           # do history expansion on space
 
+source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with lsd when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
 compinit -d ~/.config/zsh/zcompdump
 _comp_options+=(globdots) # With hidden files
-
-source ~/.config/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-
-bindkey '^I' fzf_completion
 
 setopt GLOB_COMPLETE      # Show autocompletion menu with globs
 setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
 setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
-
-zstyle ':completion:*' fzf-search-display true
 
 # History configurations
 HISTFILE=~/.config/zsh/.zsh_history
