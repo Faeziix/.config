@@ -9,8 +9,24 @@ setopt promptsubst         # enable command substitution in prompt
 setopt auto_pushd           # Push the current directory visited on the stack.
 setopt pushd_ignore_dups    # Do not store duplicates in the stack.
 setopt pushd_silent         # Do not print the directory stack after pushd or popd.
+setopt EXTENDED_GLOB        # Enable extended globbing.
+
+# Function to log elapsed time
+enable_timing=false
+log_time() {
+  if $enable_timing; then
+    local step=$1
+    local current_time=$(date +%s%N)
+    local elapsed=$(( (current_time - START_TIME) / 1000000 ))  # in milliseconds
+    echo "Time taken until $step: ${elapsed} ms"
+    START_TIME=$current_time
+  fi
+}
+START_TIME=$(date +%s%N)
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
+
+log_time "breakpoint 1"
 
 source "$ZDOTDIR/.aliases"
 
@@ -21,9 +37,11 @@ source "$ZDOTDIR/.aliases"
 if [[ -f /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]]; then
     source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     bindkey -v
+    zvm_after_init_commands+=('[ -f "$ZDOTDIR/.fzf.zsh" ] && source "$ZDOTDIR/.fzf.zsh"')
 else
     bindkey -v
     set keymap vi-command
+    [ -f "$ZDOTDIR/.fzf.zsh" ] && source "$ZDOTDIR/.fzf.zsh"
 fi
 
 # Remove mode switching delay.
@@ -88,7 +106,7 @@ if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
     . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     bindkey '^ ' autosuggest-execute
-    bindkey '^K' autosuggest-accept
+    bindkey '^o' autosuggest-accept
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 fi
 
@@ -133,9 +151,6 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-## use fzf uncomment this
-[ -f "$ZDOTDIR/.fzf.zsh" ] && source "$ZDOTDIR/.fzf.zsh"
-
 [ -s "/home/faezix/.bun/_bun" ] && source "/home/faezix/.bun/_bun"
 
 eval "$(starship init zsh)"
@@ -144,7 +159,14 @@ export STARSHIP_CONFIG=~/.config/starship-prompt/starship.toml
 source "$ZDOTDIR/bd.zsh"
 
 #
-# SSH config
+# Zoxide config
 # ---------------
 
 eval "$(zoxide init zsh)"
+
+log_time "breakpoint 2"
+
+#
+# Rust path
+# ---------------
+export PATH="$HOME/.local/share/cargo/bin:$PATH"

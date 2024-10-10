@@ -77,6 +77,12 @@ alias yayrr='yay -Rs'   # remove package with unused dependencies by other softw
 alias yayrc='yay -Sc'   # remove yay's cache
 alias yayls="yay -Qe"
 
+# +------+
+# | yazi |
+# +------+
+
+alias lf='yazi'
+
 # +-----+
 # | Git |
 # +-----+
@@ -128,3 +134,17 @@ alias nlf="$EDITOR $XDG_CONFIG_HOME/lf/lfrc"
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="z +${index}"; unset index
+
+# +------+
+# | Misc |
+# +------+
+
+download() {
+    if [[ $1 =~ ^https?://(www\.)?(youtube\.com|youtu\.be)/ ]]; then
+        yt-dlp --format "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]" "$@"
+    else
+        gallery-dl -D . --cookies-from-browser firefox "$@"
+    fi
+}
+
+alias download="download"
